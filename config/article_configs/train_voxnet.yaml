@@ -1,0 +1,83 @@
+###############################################################################
+#DATASET: "parislille3d"
+DATASET: "semantic3d"
+#DATASET: "s3dis"
+    
+###############################################################################
+NB_SAMPLES: 10 # Number of training with different initialization of weights
+
+###############################################################################
+PHASE_LIST: ['train'] # Use all point clouds to train the model
+#PHASE_LIST: ['val','train'] # use alternatively each point cloud of the dataset as validation of a model trained on all others point clouds
+    
+###############################################################################
+NUM_WORKERS: 8 # Number of threads for pytorch Dataloader
+DEVICE_ID: 0 # GPU id 
+    
+###############################################################################
+### use this to use (or not) the color or reflectance channel in input of your networks
+#USE_COLOR: True
+#USE_COLOR: False
+#USE_REFLECTANCE: True
+#USE_REFLECTANCE: False
+    
+###############################################################################
+SCALES: {1}
+#SCALES: {1,2}
+#SCALES: {1,2,3}
+### size of occupancy grid (GRID_SIZE x GRID_SIZE x GRID_SIZE), GRID_SIZE should be <= 64
+#GRID_SIZE: 16
+GRID_SIZE: 32
+
+###############################################################################
+### size of each voxel of occupancy grid (VOXEL_SIZE m x VOXEL_SIZE m x VOXEL_SIZE m)
+#VOXEL_SIZE: 0.05
+VOXEL_SIZE: 0.10
+#VOXEL_SIZE: 0.15
+#VOXEL_SIZE: 0.20
+#VOXEL_SIZE: 0.40
+
+###############################################################################    
+BATCH_SIZE: 20
+NB_POINTS_PER_CLASS: 1000 # number of points randomly chosen in each class at beginning of each epoch
+NB_POINTS_PER_CLASS_VAL: 1000
+NUM_EPOCHS: 100
+
+###############################################################################
+### intialization method for weights of the network
+#INITIALIZATION: "xavier"
+INITIALIZATION: "kaiming"
+#INITIALIZATION: "orthogonal"
+
+###############################################################################
+OPTIMIZER: "Adam"
+#OPTIMIZER: "Adadelta"
+#OPTIMIZER: "RMSprop"
+#OPTIMIZER: "SGD"
+
+###############################################################################
+EPS: !!float 1e-8 # epsilon parameter for optimizers
+    
+###############################################################################
+LR: !!float 0.001 # Learning Rate
+    
+###############################################################################
+WD: !!float 0 # Weight Decay
+    
+###############################################################################
+#GRADIENT_CLIPPING: True
+GRADIENT_CLIPPING: False
+
+###############################################################################
+### pytorch learning rate scheduler among the following: [None, "ExponentialLR", "CosineAnnealingLR"]
+### except for None, lr_scheduler parameters are set such as at last epoch, lr = 1e-6
+#LR_SCHEDULER: None
+LR_SCHEDULER: "ExponentialLR"
+#LR_SCHEDULER: "CosineAnnealingLR"
+  
+###############################################################################
+### Model name among the following: ["VoxNet", "ModVoxNet", "VGGLikeNet", "ModVGGLikeNet"]
+MODEL_NAME: "VoxNet"
+#MODEL_NAME: "ModVoxNet"
+#MODEL_NAME: "VGGLikeNet"
+#MODEL_NAME: "ModVGGLikeNet"

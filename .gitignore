@@ -1,0 +1,8 @@
+# Ignorer certains répertoires
+runs/**
+__pycache__/**
+utils/__pycache__/**
+models/__pycache__/**
+core
+*__pycache__*
+*__pycache__/**
