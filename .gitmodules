@@ -1,0 +1,17 @@
+[submodule "data/semantic3d"]
+
+	path = data/semantic3d
+
+	url = https://gitlab.com/XavR/semantic3d
+
+[submodule "data/parislille3d"]
+
+	path = data/parislille3d
+
+	url = https://gitlab.com/XavR/parislille3d
+
+[submodule "data/s3dis"]
+
+	path = data/s3dis
+
+	url = https://gitlab.com/XavR/s3dis
