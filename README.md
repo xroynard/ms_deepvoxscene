@@ -13,7 +13,7 @@ This work is based on our [arXiv paper](https://arxiv.org/abs/1804.03583), which
 
 Point cloud is an important type of geometric data structure. Due to its irregular format, we transform such data to regular 3D voxel grids. This, however, renders data voluminous and avoids using high resolution grids, which forces to make a compromise between a low discretization step (allowing a better local representation of the surface) and a grid that represents a large volume (allowing a better understanding of the context).
 
-In this paper, we use a multi-scale input to handle this problem. Our network, named MultiScale_N_\_DeepVoxScene (abbreviated in MS_N_\_DVS, _N_ is the nuber of scales used), provides an architecture that allows a precise representation of the surface near a point and the more distant context around a point. Though simple, the use of several scales greatly improves classification results.
+In this paper, we use a multi-scale input to handle this problem. Our network, named MultiScale*N*\_DeepVoxScene (abbreviated in MS*N*\_DVS, *N* is the nuber of scales used), provides an architecture that allows a precise representation of the surface near a point and the more distant context around a point. Though simple, the use of several scales greatly improves classification results.
 
 In this repository, we release code for training a multiscale classification 3D convolutionnal network on fully annotated point cloud scenes.
 
@@ -82,7 +82,8 @@ This repository has the following arborescence:
 	ms_deepvoxscene ─┬─ apps ─┬─ test.py                                            # scripts for different tasks
                      │        ├─ train.py
 	                 │        └─ visualize.py
-	                 ├─ config ─┬─ config.yaml                                      # config files
+	                 ├─ config ─┬─ train_config.yaml                                # config files
+                     │          ├─ test_config.yaml
                      │          ├─ debug_config.yaml
 	                 │          └─ article_configs ─┬─ train_voxnet.yaml            # config files used in article
                      │                              ├─ train_ms1_dvs.yaml
@@ -99,16 +100,15 @@ This repository has the following arborescence:
 	                 │                        └─ basic_blocks ─── voxel_blocks.py
 	                 ├─ runs                                                        # will be created when you run some scripts 
 	                 ├─ tests ─┬─ test_input.py                                     # unit tests 
+                     │         ├─ test_model_bases.py
                      │         ├─ test_multiscale_models.py
-	                 │         └─ test_trainer.py
+                     │         ├─ test_trainer.py
+	                 │         └─ test_voxel_blocks.py
 	                 └─ utils ─┬─ logger.py                                         # utils
-                               ├─ ?.py
-                               ├─ ?.py
-                               ├─ make_submission_file.py
-                               ├─ make_subsampled_datasets.py
+                               ├─ parameters.py
                                ├─ ply_utils.py
-                               ├─ trainer.py
-	                           └─ visualizer.py
+                               ├─ tester.py
+	                           └─ trainer.py
 
 ## Train a Multi-Scale Network
 To train a network:
