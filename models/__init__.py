@@ -5,3 +5,4 @@
 """
 
 from .multiscale_models import VoxNet, ModVoxNet, VGGLikeNet, ModVGGLikeNet, models_dict
+from .octree_models import OctreeMortonNet, models_dict

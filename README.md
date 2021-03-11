@@ -96,6 +96,7 @@ This repository has the following arborescence:
 	                 │                  └─ test
 	                 ├─ input ─── input.py                                          # class PointCloudDataset
 	                 ├─ models ─┬─ multiscale_models.py                             # multiscale models
+                     │          ├─ octree_morton_models.py
                      │          └─ conv_base ─┬─ voxel_models_base.py 
 	                 │                        └─ basic_blocks ─── voxel_blocks.py
 	                 ├─ runs                                                        # will be created when you run some scripts 
@@ -105,6 +106,7 @@ This repository has the following arborescence:
                      │         ├─ test_trainer.py
 	                 │         └─ test_voxel_blocks.py
 	                 └─ utils ─┬─ logger.py                                         # utils
+                               ├─ octree.py
                                ├─ parameters.py
                                ├─ ply_utils.py
                                ├─ tester.py
@@ -171,6 +173,7 @@ each directory `train` or `test` should contain point clouds in `.ply` files and
 Our code is released under MIT License (see LICENSE file for details).
 
 ## Changelog
+- **11/03/2021**: First implememtation of Octree with Morton Code
 - **26/06/2019**: Initial Release
 
 ## TODO List
