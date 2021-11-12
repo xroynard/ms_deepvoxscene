@@ -1,0 +1,27 @@
+name: plhydra
+
+channels:
+  - pytorch
+  - conda-forge
+
+dependencies:
+  - pip
+  - numpy
+  - scipy
+  - matplotlib
+  - pytorch
+  - torchvision
+  - cudatoolkit
+  - hydra-core 
+  - pytorch-lightning 
+  - plyfile
+  - scikit-learn
+  - tensorboard
+  - pytest
+  - sphinx
+  - pip:
+    - hydra-colorlog
+#    - hydra-optuna-sweeper
+#    - hydra-ax-sweeper
+#    - hydra-ray-launcher
+#    - hydra-submitit-launcher
