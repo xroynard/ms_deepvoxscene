@@ -1,11 +1,12 @@
 name: plhydra
 
 channels:
-  - pytorch
   - conda-forge
+  - pytorch
 
 dependencies:
   - pip
+  - python=3.9
   - numpy
   - scipy
   - matplotlib
