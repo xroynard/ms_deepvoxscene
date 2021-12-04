@@ -4,7 +4,7 @@ Created by [Xavier Roynard](https://www.researchgate.net/profile/Xavier_Roynard)
 
 ----------------------------------------------------------------
 
-![Exemple de Segmentation et Classification](apercu_methode.png)
+![Exemple de Segmentation et Classification](doc/apercu_methode.png)
 
 ----------------------------------------------------------------
 
