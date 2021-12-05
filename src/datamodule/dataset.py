@@ -92,6 +92,7 @@ class PointCloudDataset(Dataset):
                  use_class0=False,
                  use_color=False,
                  use_reflectance=False,
+                 **kwargs
                  ):
         """
         Args:

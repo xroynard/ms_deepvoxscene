@@ -1,0 +1,14 @@
+_target_: src.pl_datamodule.dataset.PointCloudDataset
+
+grid_size: 32
+voxel_size: 0.1
+scales: {1}
+nb_pts_per_class: 1000
+nb_classes: 13
+testing: False
+use_no_labels: False
+use_class0: True
+use_color: True
+use_reflectance: False
+
+class_names: ["clutter","ceiling","floor","wall","column","beam","window","door","table","chair","bookcase","sofa","board"]

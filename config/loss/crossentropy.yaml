@@ -1,0 +1,8 @@
+_target_: torch.nn.CrossEntropyLoss
+
+# weight: None
+# size_average: None
+# ignore_index: -100
+# reduce: None
+# reduction: 'mean'
+# label_smoothing: 0.0

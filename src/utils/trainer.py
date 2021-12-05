@@ -108,7 +108,7 @@ class Trainer(object):
     def train_model(self):
         
         # Monitor total training time
-        self.start_total_time = time.perf_counter()        
+        self.start_total_time = time.perf_counter()
         
         # counters
         self.nb_processed_samples = 0
@@ -119,7 +119,7 @@ class Trainer(object):
             for epoch in range(self.parameters.getp("NUM_EPOCHS")):
                 
                 # trains for one epoch
-                self.train_one_epoch(epoch)                
+                self.train_one_epoch(epoch)
                 
         # Catch exception if script is stopped by user
         except KeyboardInterrupt:

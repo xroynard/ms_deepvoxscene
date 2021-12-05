@@ -1,0 +1,6 @@
+_target_: torch.nn.BCELoss
+
+# weight: None
+# size_average: None
+# reduce: None
+# reduction: 'mean'

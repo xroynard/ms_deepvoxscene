@@ -1,0 +1,34 @@
+# @package _global_
+
+# specify here default training configuration
+defaults:
+  - pl_datamodule: default.yaml
+  - dataset: null
+
+  - pl_netmodule: default.yaml
+  - network: null
+  - optimizer: adam.yaml
+  - loss: crossentropy.yaml
+  - lr_scheduler: cosineannealing.yaml
+
+  - pl_trainer: default.yaml
+  - callbacks: default.yaml
+  - logger: default.yaml
+
+  - experiment: null
+
+  # enable color logging
+  - override hydra/hydra_logging: colorlog
+  - override hydra/job_logging: colorlog
+
+# path to original working directory
+# hydra hijacks working directory by changing it to the current log directory,
+# so it's useful to have this path as a special variable
+# https://hydra.cc/docs/next/tutorials/basic/running_your_app/working_directory
+work_dir: ${hydra:runtime.cwd}
+
+# path to folder with data
+data_dir: ${work_dir}/data/
+
+# seed for random number generators in pytorch, numpy and python.random
+seed: null
