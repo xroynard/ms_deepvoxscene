@@ -16,6 +16,10 @@ early_stopping:
   patience: 100 # how many validation epochs of not improving until training stops
   min_delta: 0 # minimum change in the monitored metric needed to qualify as an improvement
 
+# model_summary: 
+#   _target_: pytorch_lightning.callbacks.ModelSummary
+#   max_depth: 100
+
 rich_progress_bar:
   _target_: pytorch_lightning.callbacks.RichProgressBar
   # refresh_rate: 1
@@ -32,7 +36,7 @@ rich_progress_bar:
   #   metrics: 'white'
 
 lr_monitor:
-  _target_: pytorch_lightning.callbacks.LearningRateMonitoru
+  _target_: pytorch_lightning.callbacks.LearningRateMonitor
   # logging_interval: None
   # log_momentum: False
 

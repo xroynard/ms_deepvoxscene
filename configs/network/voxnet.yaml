@@ -1,0 +1,7 @@
+_target_: src.netmodule.network.multiscale_models.VoxNet
+
+# nb_channels: ?
+nb_classes: ${dataset.nb_classes}
+# nb_scales: ?
+nb_hidden: 128
+init_method: "orthogonal"

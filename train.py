@@ -13,7 +13,6 @@ from omegaconf import DictConfig
 from pytorch_lightning import Callback, LightningDataModule, LightningModule, Trainer, seed_everything
 from pytorch_lightning.loggers import LightningLoggerBase
 
-from src.utils import utils
 from src.datamodule.pl_datamodule import LitDataModule
 from src.netmodule.pl_netmodule import LitNetModule
 
@@ -56,8 +55,8 @@ def main(config: DictConfig):
                 logger.append(hydra.utils.instantiate(lg_conf))
                 
     # Init pl_trainer
-    log.info(f"Instantiate pl_trainer: <{config.trainer._target_}>")
-    pl_trainer: Trainer = hydra.utils.instantiate(config.trainer, callbacks=callbacks, logger=logger, _convert_="partial")
+    log.info(f"Instantiate pl_trainer: <{config.pl_trainer._target_}>")
+    pl_trainer: Trainer = hydra.utils.instantiate(config.pl_trainer, callbacks=callbacks, logger=logger, _convert_="partial")
         
     # Train the model
     pl_trainer.fit(model=pl_netmodule, datamodule=pl_datamodule)

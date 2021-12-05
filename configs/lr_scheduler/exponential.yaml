@@ -1,0 +1,6 @@
+_target_: torch.optim.lr_scheduler.ExponentialLR
+
+# optimizer: ?
+gamma: 0.99
+# last_epoch: -1
+# verbose: False

@@ -28,7 +28,7 @@ defaults:
 work_dir: ${hydra:runtime.cwd}
 
 # path to folder with data
-data_dir: ${work_dir}/data/
+data_dir: ${work_dir}/data
 
 # seed for random number generators in pytorch, numpy and python.random
 seed: null

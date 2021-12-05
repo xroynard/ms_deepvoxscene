@@ -1,4 +1,4 @@
-_target_: src.pl_datamodule.dataset.PointCloudDataset
+_target_: src.datamodule.dataset.PointCloudDataset
 
 grid_size: 32
 voxel_size: 0.1
@@ -11,4 +11,5 @@ use_class0: False
 use_color: False
 use_reflectance: True
 
+datadir: ${data_dir}/parislille3d # used by other configs
 class_names: ["ground","building","pole","bollard","trash can","barrier","pedestrian","car","natural"]

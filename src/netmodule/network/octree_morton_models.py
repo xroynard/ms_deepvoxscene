@@ -22,10 +22,9 @@ from torch.nn.init import calculate_gain
 
 print("multiscale_segmentation_voxel_models.py: __name__ --> ",__name__)
 
-from .base_networks import Initializer, SENet, SEAttentionNet, MSSENet, Conv3dBlock, GlobalPoolingBlock, VoxNetBase, ModVoxNetBase, MiniVGG16Base, ModMiniVGG16Base, LightResNetEncoderBase, LightResNetHidden, LightResNetDecoderBase, LightResNetFC, NonNaiveMSFusionBase, BasicFC, UltimeNetEncoderBase, UltimeNetDecoderBase, ForOctreeInferenceEncoderBase, ForOctreeInferenceDecoderBase, BasicHidden, Only1BlockForOctreeEncoderBase, Only1BlockForOctreeDecoderBase, VGG1Conv3x3x3EncoderBase, VGG2Conv2x2x2EncoderBase, VGG3Conv2x2x2EncoderBase, BN_VGG1Conv3x3x3EncoderBase, BN_VGG1Conv3x3x3DecoderBase, BN_VGG2Conv2x2x2EncoderBase, BN_VGG3Conv2x2x2EncoderBase, No_VGG2Conv2x2x2EncoderBase, No_VGG3Conv2x2x2EncoderBase
+from .conv_base.basic_blocks import Initializer, SENet, Conv3dBlock, GlobalPoolingBlock
 
-sys.path.insert(0, os.path.abspath('..'))
-from utils.octree import OctreeMorton
+from scr.utils.octree import OctreeMorton
 
 #DEBUG = True
 DEBUG = False
@@ -63,12 +62,14 @@ class OctreeMortonNet(nn.Module):
         # Conv Layers
         self.conv = {depth:nn.Sequential(Conv3dBlock(self.nb_hidden,
                                               2*self.nb_hidden,
+                                              2,
                                               norm=False,
-                                              2),
+                                              ),
                                   Conv3dBlock(2*self.nb_hidden,
                                               self.nb_hidden,
+                                              1,
                                               norm=False,
-                                              1),
+                                              ),
                                   )
                      for depth in range(self.max_net_depth)}
         
@@ -83,11 +84,13 @@ class OctreeMortonNet(nn.Module):
                                                 2*self.nb_hidden,
                                                 2,
                                                 norm=False,
-                                                transpose=True),
+                                                transpose=True,
+                                                ),
                                     Conv3dBlock(2*self.nb_hidden,
                                                 self.nb_hidden,
+                                                1,
                                                 norm=False,
-                                                1),
+                                                ),
                                     )
                        for depth in range(self.max_net_depth)}
         
@@ -217,27 +220,31 @@ class OctreeMortonNetOneBlock(nn.Module):
         # Conv Layers
         self.conv = nn.Sequential(Conv3dBlock(self.nb_hidden,
                                               2*self.nb_hidden,
+                                              2,
                                               norm=False,
-                                              2),
+                                              ),
                                   Conv3dBlock(2*self.nb_hidden,
                                               self.nb_hidden,
+                                              1,
                                               norm=False,
-                                              1),
+                                              ),
                                   )
                                           
         # Hidden Layers
         self.hidden = Conv3dBlock(self.nb_hidden,self.nb_hidden,1)
         
         # DeConv Layers
-        self.deconv = nn.Sequential(Conv3dBlock((1+if self.cat_aggregate)*self.nb_hidden,
+        self.deconv = nn.Sequential(Conv3dBlock((1+ self.cat_aggregate)*self.nb_hidden,
                                                 2*self.nb_hidden,
                                                 2,
                                                 norm=False,
-                                                transpose=True),
+                                                transpose=True,
+                                                ),
                                     Conv3dBlock(2*self.nb_hidden,
                                                 self.nb_hidden,
+                                                1,
                                                 norm=False,
-                                                1),
+                                                ),
                                     )
         
         # Fully Connected Layers

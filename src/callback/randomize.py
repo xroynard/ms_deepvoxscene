@@ -15,6 +15,9 @@ import numpy as np
 from pytorch_lightning import Callback, Trainer
 from pytorch_lightning.utilities import rank_zero_only
 
+import logging
+log = logging.getLogger(__name__)
+
 #%% Functions
 
 #%% Classes
@@ -27,7 +30,12 @@ class RandomizeDataset(Callback):
 
     @rank_zero_only
     def on_epoch_start(self, pl_trainer:Trainer, pl_netmodule):
+        print(pl_trainer)
+        print(pl_trainer.train_dataloader)
+        print(pl_trainer.train_dataloader.dataset)
+        print(pl_trainer.train_dataloader.dataset.datasets)
         for ds in pl_trainer.train_dataloader.dataset.datasets:
+            print(ds)
             ds.randomize_samples()
         
 

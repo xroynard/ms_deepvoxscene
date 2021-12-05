@@ -1,4 +1,4 @@
- _target_: str = "torch.optim.sgd.SGD"
+ _target_: torch.optim.SGD
 
 # params: Any = MISSING
 lr: 1e-3

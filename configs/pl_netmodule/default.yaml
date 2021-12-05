@@ -1,0 +1,11 @@
+_target_: src.netmodule.pl_netmodule.LitNetModule
+_recursive_: False
+
+network: ${network}
+optimizer: ${optimizer}
+loss: ${loss}
+lr_scheduler: ${lr_scheduler}
+config:
+  scales: ${dataset.scales}
+  use_color: ${dataset.use_color}
+  use_reflectance: ${dataset.use_reflectance}

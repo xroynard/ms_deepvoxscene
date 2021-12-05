@@ -1,0 +1,9 @@
+_target_: src.datamodule.pl_datamodule.LitDataModule
+_recursive_: False
+
+dataset: ${dataset}
+config:
+  datadir: ${dataset.datadir}
+  fold_id: 0
+  batch_size: 16
+  num_workers: 4

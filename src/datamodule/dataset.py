@@ -19,8 +19,10 @@ from torch.utils.data import Dataset
 from sklearn.neighbors import KDTree
 
 # pour importer les modules 
-sys.path.insert(0, os.path.abspath('..'))
-from utils.ply_utils import read_ply, write_ply
+from src.utils.ply_utils import read_ply, write_ply
+
+import logging
+log = logging.getLogger(__name__)
 
 ###############################################################################
 def pc_augmentation(clouds):
@@ -254,6 +256,7 @@ class PointCloudDataset(Dataset):
             tmp_pc = np.vstack((f_pc['x'],f_pc['y'],f_pc['z']))
             
             # Reads class channel
+            log.info(f"file: {ssfile}, dtype: {f_pc.dtype}")
             if not(self.use_no_labels):
                 tmp_pc = np.vstack( (tmp_pc, f_pc['class']) )
                               
